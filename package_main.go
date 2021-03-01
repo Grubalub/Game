@@ -1,9 +1,17 @@
 package main
 
-import blackjack "Grubalub/blackjack_ai"
+import (
+	blackjack "Grubalub/blackjack_ai"
+	"fmt"
+)
 
 func main() {
-
-	game := blackjack.New()
-	game.Play(blackjack.HumanAI())
+	opts := blackjack.Options{
+		Decks:           3,
+		Hands:           2,
+		BlackjackPayout: 1.5,
+	}
+	game := blackjack.New(opts)
+	winnings := game.Play(blackjack.HumanAI())
+	fmt.Println(winnings)
 }
